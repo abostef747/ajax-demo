@@ -13,10 +13,19 @@
 var request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
+
+
 	console.log("Nånting hände!");
-    // I variabeln res (response) finns det information...
-    console.log("Svaret (response) är " + request.responseText);
+
+	if(request.readyState == 4 && request.status == 200) {
+      // I variabeln res (response) finns det information...
+      console.log("Svaret (response) är " + request.responseText);
+      
+      // Spara texten i en variabel
+      var data = request.responseText;
+      document.write(data);
+     }
 }
 
-request.open('GET', 'http://mardby.se/AJK15G/lorem_text.php');
+request.open('GET', 'https://api.spotify.com/v1/users/hello');
 request.send();
